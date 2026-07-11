@@ -81,9 +81,8 @@ def _resolve_anthropic_max_tokens(
 
 
 def _add_cache_control(block: dict[str, Any]) -> dict[str, Any]:
-    cached_block = copy.deepcopy(block)
-    cached_block.setdefault("cache_control", _CACHE_CONTROL_EPHEMERAL)
-    return cached_block
+    block.setdefault("cache_control", _CACHE_CONTROL_EPHEMERAL)
+    return block
 
 
 def _apply_prompt_caching(payload: dict[str, Any]) -> dict[str, Any]:
