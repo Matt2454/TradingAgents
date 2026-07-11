@@ -85,7 +85,6 @@ def _add_cache_control(block: dict[str, Any]) -> dict[str, Any]:
 def _apply_prompt_caching(payload: dict[str, Any]) -> dict[str, Any]:
     """Mark static Anthropic prompt segments as cacheable."""
     cached_payload = copy.deepcopy(payload)
-    cached_payload.setdefault("cache_control", _CACHE_CONTROL_EPHEMERAL)
 
     system = cached_payload.get("system")
     if isinstance(system, str):
