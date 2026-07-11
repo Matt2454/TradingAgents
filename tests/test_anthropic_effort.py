@@ -125,6 +125,8 @@ class TestPromptCachingAndTokenScaling:
             ("claude-sonnet-5", "medium", 12288),
             ("claude-sonnet-5", "high", 16384),
             ("claude-fable-5", "high", 24576),
+            ("claude-mythos-5", "high", 24576),
+            ("claude-mythos-preview", "high", 24576),
         ],
     )
     def test_effort_allocates_dynamic_token_floor(self, model, effort, expected):
