@@ -67,11 +67,15 @@ def _resolve_anthropic_max_tokens(
     if not effort or not _supports_effort(model):
         return None
 
-    match = _EFFORT_MODEL.match(model.lower())
-    if not match:
-        return None
+    model_lc = model.lower()
+    if "mythos" in model_lc:
+        family = "fable"
+    else:
+        match = _EFFORT_MODEL.match(model_lc)
+        if not match:
+            return None
+        family = match.group(1)
 
-    family = match.group(1)
     effort_lc = effort.lower()
     return _EFFORT_MAX_TOKENS.get(family, {}).get(effort_lc)
 
